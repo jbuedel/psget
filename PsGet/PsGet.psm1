@@ -92,7 +92,7 @@ Param(
                 Copy-Item $CandidateFilePath $TempModuleFolderPath
             }					    
                 
-            ## Let’s try guessing module name
+            ## Letï¿½s try guessing module name
             if ($ModuleName -eq ""){		        		        
                 $BestCandidateModule = (Get-ChildItem $TempModuleFolderPath -Filter "*.psm1" -Recurse | select -Index 0).FullName
                 $ModuleName = [IO.Path]::GetFileNameWithoutExtension($BestCandidateModule)
@@ -133,11 +133,11 @@ Param(
     When ModuleUrl or ModulePath specified, allowas specifing name of the module.
 .Parameter Global
     If set, attempts to install the module to the all users location in Windows\System32...    
-.Parmeter DoNotImport
+.Parameter DoNotImport
     Indicates that command should not import module after intsallation
-.Parmeter Startup
+.Parameter Startup
     Adds installed module to the profile.ps1
-.Parmeter DirectoryUrl
+.Parameter DirectoryUrl
     URL to central directory. By default it is https://github.com/chaliy/psget/raw/master/Registry.xml
 .Link
     http://psget.net       
@@ -234,7 +234,7 @@ Param(
     Retrieve infromation about module from central directory
 .Description 
     Command query contral directory (https://github.com/chaliy/psget/raw/master/TestModules/Directory.xml) to get information about module specified.
-.Parmeter $DirectoryUrl
+.Parameter $DirectoryUrl
     URL to central directory. By default it is https://github.com/chaliy/psget/raw/master/Registry.xml
 .Link
     http://psget.net
@@ -334,7 +334,7 @@ Param(
             return $nameMatch.Groups["name"].Value
         }
                 
-        ## Na¿ve try to guess name from URL
+        ## Naï¿½ve try to guess name from URL
         $nameMatch = [regex]::match($downloadUrl, "/(?'name'[^/]+\.(psm1|zip))[\#\?]*")
         if ($nameMatch.Groups["name"].Success) {
             return $nameMatch.Groups["name"].Value
